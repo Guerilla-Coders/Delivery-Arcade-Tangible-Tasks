@@ -10,4 +10,6 @@
   </include>
 
   <node pkg="turtlebot3_bringup" type="turtlebot3_diagnostics" name="turtlebot3_diagnostics" output="screen"/>
+  <!-- <node pkg="turtlebot3_bringup" type="tangible_tasks_relay.py" name="tangible_tasks_relay.py" output="screen"/> -->
+  <node pkg="turtlebot3_bringup" type="tangible_tasks_relay" name="tangible_tasks_relay" output="screen"/>
 </launch>

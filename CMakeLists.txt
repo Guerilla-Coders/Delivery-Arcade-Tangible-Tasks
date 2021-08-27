@@ -11,21 +11,26 @@ add_compile_options(-std=c++11)
 # Find catkin packages and libraries for catkin and system dependencies
 ################################################################################
 find_package(catkin REQUIRED COMPONENTS
+  rospy
   roscpp
   std_msgs
   sensor_msgs
   diagnostic_msgs
   turtlebot3_msgs
+  message_generation
 )
 
 ################################################################################
 # Setup for python modules and scripts
 ################################################################################
-
+#catkin_python_setup()
 ################################################################################
 # Declare ROS messages, services and actions
 ################################################################################
-
+add_message_files(
+  FILES
+  sound_effects.msg
+)
 ################################################################################
 # Declare ROS dynamic reconfigure parameters
 ################################################################################
@@ -34,7 +39,7 @@ find_package(catkin REQUIRED COMPONENTS
 # Declare catkin specific configuration to be passed to dependent projects
 ################################################################################
 catkin_package(
-  CATKIN_DEPENDS roscpp std_msgs sensor_msgs diagnostic_msgs turtlebot3_msgs
+  CATKIN_DEPENDS rospy roscpp std_msgs sensor_msgs diagnostic_msgs turtlebot3_msgs
 )
 
 ################################################################################
@@ -66,6 +71,12 @@ install(DIRECTORY launch
 
 install(FILES 99-turtlebot3-cdc.rules
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+catkin_install_python(PROGRAMS
+#   nodes/socketio_relay.py
+  src/tangible_tasks_relay
+#   scripts/my_python_script
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 ################################################################################
