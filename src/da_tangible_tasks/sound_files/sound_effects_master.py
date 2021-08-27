@@ -2,7 +2,7 @@
 
 from .sound_effects_subscriber import SoundEffectSubscriber
 from ..organ.mouth import universal_talk
-from temporary_sound_files import *
+from .temporary_sound_files import *
 from ..const.sound_consts import SoundEffectConstants
 import rospy
 

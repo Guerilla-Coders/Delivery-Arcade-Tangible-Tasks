@@ -1,5 +1,5 @@
 from random import randint
-from const.sound_consts import SoundEffectConstants
+from ..const.sound_consts import SoundEffectConstants
 
 class RobotLine:
     def __init__(self):
