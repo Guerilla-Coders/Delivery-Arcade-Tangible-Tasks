@@ -5,7 +5,7 @@ d = generate_distutils_setup(
     package_dir={'': 'src'}
 )
 d2 = generate_distutils_setup(
-    packages=['custom_msgs'],
+    packages=['msg'],
     package_dir={'':'turtlebot3_bringup'}
 )
 setup(**d)

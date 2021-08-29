@@ -2,7 +2,7 @@
 
 import rospy
 # from ..psuedo_msg.psuedo_sound_effects import sound_effects
-from custom_msgs.msg import *
+from turtlebot3_bringup.msg import sound_effects
 from ..const.sound_consts import SoundEffectConstants
 
 class SoundEffectSubscriber:

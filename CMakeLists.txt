@@ -31,6 +31,10 @@ add_message_files(
   FILES
   sound_effects.msg
 )
+
+generate_messages(
+  DEPENDENCIES
+)
 ################################################################################
 # Declare ROS dynamic reconfigure parameters
 ################################################################################
