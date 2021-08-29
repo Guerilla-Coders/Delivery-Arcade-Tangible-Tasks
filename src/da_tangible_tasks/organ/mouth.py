@@ -5,35 +5,35 @@ from playsound import playsound
 import os
         
 class DeliveryArcadeAgentMouth():
-    def talk_en(words):
+    def talk_en(self, words):
             tts = gTTS(text = words, lang = 'en')
             tts.save('sample_1.mp3')
             playsound('sample_1.mp3', True)
             os.remove('sample_1.mp3')
 
 
-    def talk_kr(words):
+    def talk_kr(self, words):
             tts = gTTS(text = words, lang = 'ko')
             tts.save('sample_1.mp3')
             playsound('sample_1.mp3', True)
             os.remove('sample_1.mp3')
 
 
-    def talk_es(words):
+    def talk_es(self, words):
             tts = gTTS(text = words, lang = 'es')
             tts.save('sample_1.mp3')
             playsound('sample_1.mp3', True)
             os.remove('sample_1.mp3') 
 
-    def universal_talk(string, language):
+    def universal_talk(self, words, language):
         """Defined under language selection
             0 : ENGLISH
             1 : KOREAN
             2 : SPANISH
         """
         if language == 1:
-            return talk_kr(string)
+            return self.talk_kr(words)
         elif language == 0:
-            return talk_en(string)
+            return self.talk_en(words)
         elif language == 2:
-            return talk_es(string)
+            return self.talk_es(words)

@@ -19,6 +19,6 @@ if __name__ == '__main__':
         # sound_effect_master.run_sound()
 
         """
-        Activate the linde below for speaker test!
+        Activate the line below for speaker test!
         """
         sound_effect_master.speaker_test()
