@@ -4,9 +4,4 @@ d = generate_distutils_setup(
     packages=['da_tangible_tasks'],
     package_dir={'': 'src'}
 )
-d2 = generate_distutils_setup(
-    packages=['msg'],
-    package_dir={'':'turtlebot3_bringup'}
-)
 setup(**d)
-setup(**d2)
