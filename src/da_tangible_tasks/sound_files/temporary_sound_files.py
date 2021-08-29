@@ -32,7 +32,7 @@ class RobotLine:
 
     def pick_random_line(self, mode, random):
         current_lines = self.lines_list[mode]        
-        index = randint(random)
+        index = randint(0,random)
         current_line = current_lines[index]
         return current_line
 

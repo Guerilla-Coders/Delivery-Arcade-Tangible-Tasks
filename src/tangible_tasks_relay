@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
 import rospy
-import sys
 from da_tangible_tasks.const.sound_consts import SoundEffectConstants
-
-for i in sys.path:
-    print(f'{i}')
-# sys.path.append('/usr/lib/python3.8/site-packages')
 from da_tangible_tasks.sound_files.sound_effects_master import SoundEffectMaster
 
 if __name__ == '__main__':
@@ -14,11 +9,12 @@ if __name__ == '__main__':
 
     sound_effect_master = SoundEffectMaster()
 
+    """
+    Activate the line below for speaker test!
+    """
+    sound_effect_master.speaker_test()
 
     if sound_effect_master.mode is not None:
-        # sound_effect_master.run_sound()
+        sound_effect_master.run_sound()
 
-        """
-        Activate the line below for speaker test!
-        """
-        sound_effect_master.speaker_test()
+        

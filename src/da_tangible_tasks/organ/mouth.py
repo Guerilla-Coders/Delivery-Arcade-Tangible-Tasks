@@ -1,28 +1,51 @@
 """MOUTH MODULE FOR gTTS"""
 
 from gtts import gTTS
-from playsound import playsound
+# from playsound import playsound
+from da_tangible_tasks.const.sound_consts import SoundEffectConstants
 import os
+
         
 class DeliveryArcadeAgentMouth():
+    def __init__(self):
+        self.lang_dict = {
+            SoundEffectConstants.ENGLISH : 'en',
+            SoundEffectConstants.KOREAN : 'ko',
+            SoundEffectConstants.SPANISH : 'es'
+        }
+    
+    def talk(self, words, language):
+        tts = gTTS(text = words, lang = self.lang_dict[language])
+        tts.save('./sample_1.mp3')
+        # playsound('sample_1.mp3', True)
+        os.system('chmod +x ./sample_1.mp3')
+        os.system('vlc ./sample_1.mp3 vlc://quit')
+        os.remove('./sample_1.mp3')
+
+
+
     def talk_en(self, words):
             tts = gTTS(text = words, lang = 'en')
-            tts.save('sample_1.mp3')
-            playsound('sample_1.mp3', True)
-            os.remove('sample_1.mp3')
+            tts.save('./sample_1.mp3')
+            # playsound('sample_1.mp3', True)
+            os.system('chmod +x ./sample_1.mp3')
+            os.system('vlc ./sample_1.mp3 vlc://quit')
+            os.remove('./sample_1.mp3')
 
 
     def talk_kr(self, words):
             tts = gTTS(text = words, lang = 'ko')
             tts.save('sample_1.mp3')
-            playsound('sample_1.mp3', True)
+            # playsound('sample_1.mp3', True)
+            os.system('vlc ./sample_1.mp3 vlc://quit')
             os.remove('sample_1.mp3')
 
 
     def talk_es(self, words):
             tts = gTTS(text = words, lang = 'es')
             tts.save('sample_1.mp3')
-            playsound('sample_1.mp3', True)
+            # playsound('sample_1.mp3', True)
+            os.system('vlc ./sample_1.mp3 vlc://quit')
             os.remove('sample_1.mp3') 
 
     def universal_talk(self, words, language):
@@ -31,9 +54,9 @@ class DeliveryArcadeAgentMouth():
             1 : KOREAN
             2 : SPANISH
         """
-        if language == 1:
-            return self.talk_kr(words)
-        elif language == 0:
+        if language == SoundEffectConstants.ENGLISH:
             return self.talk_en(words)
-        elif language == 2:
+        elif language == SoundEffectConstants.KOREAN:
+            return self.talk_kr(words)
+        elif language == SoundEffectConstants.SPANISH:
             return self.talk_es(words)
