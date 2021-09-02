@@ -13,8 +13,8 @@
   <maintainer email="kssjustin98@gmail.com">Sungsik Kong</maintainer>
   
   <url type="emanual">http://turtlebot3.robotis.com</url>
-  <url type="repository">https://github.com/ROBOTIS-GIT/turtlebot3</url>
-  <url type="bugtracker">https://github.com/ROBOTIS-GIT/turtlebot3/issues</url>
+  <url type="repository">https://github.com/Guerilla-Coders/Delivery-Arcade-Tangible-Tasks</url>
+  <url type="bugtracker">https://github.com/Guerilla-Coders/Delivery-Arcade-Tangible-Tasks/issues</url>
   <buildtool_depend>catkin</buildtool_depend>
   <depend>rospy</depend>
   <depend>roscpp</depend>

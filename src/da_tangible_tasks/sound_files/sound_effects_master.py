@@ -31,7 +31,7 @@ class SoundEffectMaster:
         self.get_sound_effects_info()
         self.get_ready_for_speech()
         self.say_it()
-        self.mode = None
+        # self.mode = None
 
     def speaker_test(self):
         self.mode = SoundEffectConstants.DEFAULT_MODE
