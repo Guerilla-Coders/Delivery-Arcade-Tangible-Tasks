@@ -25,10 +25,11 @@ class SoundEffectMaster:
         self.robotline = RobotLine().pick_random_line(self.mode, self.random)
 
     def say_it(self):
-        self.mouth.universal_talk(self.robotline, self.language)
+        self.mouth.talk(self.robotline, self.language)
+
 
     def run_sound(self):
-        self.get_sound_effects_info()
+        # self.get_sound_effects_info()
         self.get_ready_for_speech()
         self.say_it()
         # self.mode = None

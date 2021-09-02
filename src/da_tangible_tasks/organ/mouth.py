@@ -15,11 +15,17 @@ class DeliveryArcadeAgentMouth():
         }
     
     def talk(self, words, language):
+        """Defined under language selection
+            0 : ENGLISH (en)
+            1 : KOREAN (ko)
+            2 : SPANISH (es)
+        """
         tts = gTTS(text = words, lang = self.lang_dict[language])
         tts.save('./sample_1.mp3')
         # playsound('sample_1.mp3', True)
         os.system('chmod +x ./sample_1.mp3')
-        os.system('vlc ./sample_1.mp3 vlc://quit')
+        # os.system('vlc ./sample_1.mp3 vlc://quit')
+        os.system('cvlc ./sample_1.mp3 vlc://quit')
         os.remove('./sample_1.mp3')
 
 
@@ -47,16 +53,3 @@ class DeliveryArcadeAgentMouth():
             # playsound('sample_1.mp3', True)
             os.system('vlc ./sample_1.mp3 vlc://quit')
             os.remove('sample_1.mp3') 
-
-    def universal_talk(self, words, language):
-        """Defined under language selection
-            0 : ENGLISH
-            1 : KOREAN
-            2 : SPANISH
-        """
-        if language == SoundEffectConstants.ENGLISH:
-            return self.talk_en(words)
-        elif language == SoundEffectConstants.KOREAN:
-            return self.talk_kr(words)
-        elif language == SoundEffectConstants.SPANISH:
-            return self.talk_es(words)
