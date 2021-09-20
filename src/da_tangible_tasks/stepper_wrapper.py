@@ -8,13 +8,7 @@ GPIO.setmode(GPIO.BCM)
 
 class StepperController:
     coil_delay = 0.001
-    steps_per_revolution = 2048
-    seq_full_step = [
-        [1, 0, 0, 0],
-        [0, 1, 0, 0],
-        [0, 0, 1, 0],
-        [0, 0, 0, 1]
-    ]
+    steps_per_revolution = 4096
     seq_half_step = [
         [1, 0, 0, 0],
         [1, 1, 0, 0],
@@ -49,7 +43,8 @@ class StepperController:
     def steps(self, num_steps):
         print(f"{num_steps} steps in {'CCW' if num_steps < 0 else 'CW'} direction")
 
-        counter = range(num_steps) if num_steps >= 0 else range(-num_steps, 0)
+        counter = range(num_steps) if num_steps >= 0 else range(-num_steps, 0, -1)
+        print(f"counter is {counter}")
         for i in counter:
             step_pointer = i % self.num_seq
             for j, pin in enumerate(self.coil_pins):
