@@ -26,7 +26,7 @@ class StepperController:
         [1, 0, 0, 1],
     ]
 
-    def __init__(self, enable_pin: int, coil_pins: List[int, int, int, int]):
+    def __init__(self, enable_pin: int, coil_pins: List[int]):
         self.enable_pin = enable_pin
         self.coil_pins = coil_pins
         self.seq = self.seq_half_step
