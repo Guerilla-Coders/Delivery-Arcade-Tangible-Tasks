@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import rospy
-from da_tangible_tasks.sound_files.sound_effects_master import SoundEffectMaster
+from da_tangible_tasks.activities.sound_effect_master import SoundEffectMaster
 from time import sleep
 
 if __name__ == '__main__':
@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     while True:
         # Always listening to sound_effects topic
-        sound_effect_master.get_sound_effects_info()
+        sound_effect_master.get_sound_effect_info()
 
         if sound_effect_master.mode is not None:
             sound_effect_master.run_sound()

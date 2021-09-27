@@ -29,7 +29,7 @@ catkin_python_setup()
 ################################################################################
 add_message_files(
   FILES
-  sound_effects.msg
+  sound_effect.msg
 )
 
 generate_messages(

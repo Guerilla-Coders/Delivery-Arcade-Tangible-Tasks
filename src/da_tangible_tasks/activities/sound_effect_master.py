@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from .sound_effects_subscriber import SoundEffectSubscriber
+from .sound_effect_subscriber import SoundEffectSubscriber
 from ..organ.mouth import DeliveryArcadeAgentMouth
 from .temporary_sound_files import *
 from ..const.sound_consts import SoundEffectConstants
@@ -15,11 +15,11 @@ class SoundEffectMaster:
         self.subscriber = SoundEffectSubscriber()    
         self.mouth = DeliveryArcadeAgentMouth()
 
-    def get_sound_effects_info(self):
-        sound_effects_info = self.subscriber.get_information()
-        self.mode = sound_effects_info['mode']
-        self.random = sound_effects_info['random']
-        self.language = sound_effects_info['language']
+    def get_sound_effect_info(self):
+        sound_effect_info = self.subscriber.get_information()
+        self.mode = sound_effect_info['mode']
+        self.random = sound_effect_info['random']
+        self.language = sound_effect_info['language']
 
     def get_ready_for_speech(self):
         self.robotline = RobotLine().pick_random_line(self.mode, self.random)
