@@ -7,8 +7,14 @@ import os
 
 
 class DeliveryArcadeAgentMouth:
+    alias = {
+        "EN": "en",
+        "KR": "ko",
+        "ES": "es"
+    }
+
     def talk(self, words, language):
-        tts = gTTS(text=words, lang=language)
+        tts = gTTS(text=words, lang=self.alias[language])
         tts.save('./sample_1.mp3')
         # playsound('sample_1.mp3', True)
         os.system('chmod +x ./sample_1.mp3')
