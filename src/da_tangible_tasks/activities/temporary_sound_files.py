@@ -1,6 +1,7 @@
 from random import randint
 from ..const.sound_consts import SoundEffectConstants
 
+
 class RobotLine:
     def __init__(self):
         self.eng_greetings_list = [
@@ -31,8 +32,7 @@ class RobotLine:
         ]
 
     def pick_random_line(self, mode, random):
-        current_lines = self.lines_list[mode]        
-        index = randint(0,random)
+        current_lines = self.lines_list[mode]
+        index = randint(0, random)
         current_line = current_lines[index]
         return current_line
-
