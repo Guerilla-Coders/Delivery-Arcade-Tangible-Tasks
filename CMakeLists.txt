@@ -29,7 +29,8 @@ catkin_python_setup()
 ################################################################################
 add_message_files(
   FILES
-  sound_effect.msg
+#  sound_effect.msg
+  speech.msg
 )
 
 generate_messages(
@@ -78,7 +79,8 @@ install(FILES 99-turtlebot3-cdc.rules
 )
 catkin_install_python(PROGRAMS
 #   nodes/socketio_relay.py
-  src/tangible_tasks_relay
+#  src/tangible_tasks_relay
+  src/speech_relay
 #   scripts/my_python_script
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

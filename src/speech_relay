@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import rospy
+from turtlebot3_bringup.msg import speech
+from da_tangible_tasks.organ.mouth import DeliveryArcadeAgentMouth
+
+
+class SpeechSubscriber:
+    language: str
+    speech_line: str
+
+    def __init__(self):
+        self.mouth = DeliveryArcadeAgentMouth()
+
+    def fetch_speech_data(self) -> None:
+        speech_data: speech = rospy.wait_for_message('speech', speech)
+        self.language = speech_data.language
+        self.speech_line = speech_data.speech_line
+        rospy.loginfo(f'Received speech data: {self.language}-{self.speech_line}')
+
+        self.mouth.talk(self.speech_line, self.language)
+
+
+if __name__ == '__main__':
+    rospy.init_node('speech_relay')
+    rospy.loginfo('node)speech_relay on-line.')
+
+    speech_subscriber = SpeechSubscriber()
+    while True:
+        speech_subscriber.fetch_speech_data()
