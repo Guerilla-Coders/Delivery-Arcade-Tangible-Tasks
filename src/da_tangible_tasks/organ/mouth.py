@@ -7,20 +7,8 @@ import os
 
 
 class DeliveryArcadeAgentMouth:
-    def __init__(self):
-        self.lang_dict = {
-            SoundEffectConstants.ENGLISH: 'en',
-            SoundEffectConstants.KOREAN: 'ko',
-            SoundEffectConstants.SPANISH: 'es'
-        }
-
     def talk(self, words, language):
-        """Defined under language selection
-            0 : ENGLISH (en)
-            1 : KOREAN (ko)
-            2 : SPANISH (es)
-        """
-        tts = gTTS(text=words, lang=self.lang_dict[language])
+        tts = gTTS(text=words, lang=language)
         tts.save('./sample_1.mp3')
         # playsound('sample_1.mp3', True)
         os.system('chmod +x ./sample_1.mp3')
