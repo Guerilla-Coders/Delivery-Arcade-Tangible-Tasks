@@ -20,6 +20,10 @@ if __name__ == '__main__':
         sound_effect_master.get_sound_effect_info()
 
         if sound_effect_master.mode is not None:
+            rospy.loginfo(f"Sound Effect Master "
+                          f"mode: {sound_effect_master.mode} "
+                          f"random: {sound_effect_master.random} "
+                          f"language: {sound_effect_master.language}")
             sound_effect_master.run_sound()
             rospy.loginfo(f'Sound file now playing... :{sound_effect_master.robotline}')
             sleep(10)
