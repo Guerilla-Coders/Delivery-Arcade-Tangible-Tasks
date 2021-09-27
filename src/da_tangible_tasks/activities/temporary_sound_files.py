@@ -24,11 +24,17 @@ class RobotLine:
             "Sir, could you forgive me for asking you to step aside please? I am in a hurry."
         ]
 
+        self.eng_pigeon_list = [
+            "Fucking pigeon, get out of my way!",
+            "Next time, your flesh will be my cargo, you filthy animal."
+        ]
+
         self.lines_list = [
             self.eng_greetings_list,
             self.eng_apologizes_list,
             self.eng_appreciation_list,
-            self.eng_yeild_inquiry_list
+            self.eng_yeild_inquiry_list,
+            self.eng_pigeon_list
         ]
 
     def pick_random_line(self, mode, random):
