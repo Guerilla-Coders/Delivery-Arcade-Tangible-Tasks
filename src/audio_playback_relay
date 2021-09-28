@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+import rospy
+from std_msgs.msg import String
+import os
+
+
+class AudioPlaybackSubscriber:
+    code: str
+    code_to_path = {
+        "ALERT": "./resources/audio/smooth_alert.wav",
+        "PIGEON": "./resources/audio/warning.ogg"
+    }
+
+    def __init__(self):
+        self.playback = None
+
+    def play(self, code):
+        path = self.code_to_path[code]
+        os.system(f'chmod +x {path}')
+        os.system(f'cvlc {path} vlc://quit')
+
+    def fetch_audio_data(self) -> None:
+        audio_code_data: String = rospy.wait_for_message('audio', String)
+        rospy.loginfo(f'Received audio code: {audio_code_data.data}')
+        self.play(audio_code_data.data)
+
+
+if __name__ == '__main__':
+    rospy.init_node('audio_relay')
+    rospy.loginfo('node)audio_relay on-line.')
+
+    audio_subscriber = AudioPlaybackSubscriber()
+    while True:
+        audio_subscriber.fetch_audio_data()
