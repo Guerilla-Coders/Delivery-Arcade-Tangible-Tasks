@@ -81,6 +81,7 @@ catkin_install_python(PROGRAMS
 #   nodes/socketio_relay.py
 #  src/tangible_tasks_relay
   src/speech_relay
+  src/audio_playback_relay
 #   scripts/my_python_script
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
