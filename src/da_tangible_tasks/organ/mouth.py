@@ -1,8 +1,6 @@
 """MOUTH MODULE FOR gTTS"""
 
 from gtts import gTTS
-# from playsound import playsound
-from da_tangible_tasks.const.sound_consts import SoundEffectConstants
 import os
 
 
