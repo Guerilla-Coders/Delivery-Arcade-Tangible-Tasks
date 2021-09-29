@@ -26,4 +26,4 @@ if __name__ == '__main__':
                           f"language: {sound_effect_master.language}")
             sound_effect_master.run_sound()
             rospy.loginfo(f'Sound file now playing... :{sound_effect_master.robotline}')
-            sleep(10)
+            # sleep(10)

@@ -6,9 +6,10 @@ import os
 
 class AudioPlaybackSubscriber:
     code: str
+    root_path = "~/catkin_ws/src/turtlebot3/turtlebot3_bringup/src/da_tangible_tasks"
     code_to_path = {
-        "ALERT": "./resources/audio/smooth_alert.wav",
-        "PIGEON": "./resources/audio/warning.ogg"
+        "ALERT": "resources/audio/warning.ogg",
+        "PIGEON": "resources/audio/pigeon.wav"
     }
 
     def __init__(self):
@@ -16,6 +17,7 @@ class AudioPlaybackSubscriber:
 
     def play(self, code):
         path = self.code_to_path[code]
+        path = os.path.join(self.root_path, path)
         os.system(f'chmod +x {path}')
         os.system(f'cvlc {path} vlc://quit')
 
