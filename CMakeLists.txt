@@ -79,7 +79,7 @@ install(FILES 99-turtlebot3-cdc.rules
 catkin_install_python(PROGRAMS
   src/speech_relay
   src/audio_playback_relay
-#   scripts/my_python_script
+  src/lid_action_relay
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

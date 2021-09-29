@@ -18,4 +18,9 @@ class SoundEffectConstants:
     KOREAN = 1
     SPANISH = 2
 
-    DEFAULT_LANGUAGE = 0 # default language : english
+    DEFAULT_LANGUAGE = 0  # default language : english
+
+
+class ActionConstants:
+    lid_open = "OPEN"
+    lid_close = "CLOSE"

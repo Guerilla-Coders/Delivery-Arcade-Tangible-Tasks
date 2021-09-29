@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+import rospy
+from std_msgs.msg import String
+from da_tangible_tasks.organ.stepper_driver import StepperController
+from da_tangible_tasks.consts import ActionConstants
+
+
+class LidActionSubscriber:
+    steps_closed_to_opened = 2048
+    direction = 1
+
+    def __init__(self):
+        self.stepper = StepperController(18, [24, 25, 8, 7])
+        self.state = ActionConstants.lid_close
+
+    def do_action(self, action_code):
+        if self.state != action_code:
+            self.stepper.enable_motor()
+            if action_code == ActionConstants.lid_close:
+                print(f"Closing Lid")
+                self.stepper.steps(1 * self.direction * self.steps_closed_to_opened)
+                self.stepper.steps(-1 * self.direction * self.steps_closed_to_opened)
+            elif action_code == ActionConstants.lid_open:
+                print(f"Opening Lid")
+                self.stepper.steps(-1 * self.direction * self.steps_closed_to_opened)
+                self.stepper.steps(1 * self.direction * self.steps_closed_to_opened)
+            else:
+                raise ValueError
+            self.stepper.disable_motor()
+        else:
+            print(f"Lid is already on {self.state} state")
+
+    def fetch_action_data(self) -> None:
+        lid_action_data: String = rospy.wait_for_message('lid_action', String)
+        rospy.loginfo(f'Received lid action: {lid_action_data.data}')
+        self.do_action(lid_action_data.data)
+
+
+if __name__ == '__main__':
+    rospy.init_node('lid_action')
+    rospy.loginfo('node)lid_action on-line.')
+
+    lid_action_subscriber = LidActionSubscriber()
+    while True:
+        lid_action_subscriber.fetch_action_data()
