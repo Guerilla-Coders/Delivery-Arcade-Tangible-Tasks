@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import rospy
 from std_msgs.msg import String
-from da_tangible_tasks.organ.stepper_driver import StepperController
+# from da_tangible_tasks.organ.stepper_driver import StepperController
+from da_tangible_tasks.organ.stepper_driver_nosudo import StepperController
 from da_tangible_tasks.consts import ActionConstants
 
 
