@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import subprocess
 from da_tangible_tasks.config_fetcher.config_fetcher import fetch_config
 from da_tangible_tasks.config_fetcher.network_config import NetworkConfig
@@ -17,4 +19,6 @@ webcam_relay_args = [
     ]
 ]
 
-webcam_relay_process = subprocess.Popen(webcam_relay_args)
+if __name__ == '__main__':
+    webcam_relay_process = subprocess.Popen(webcam_relay_args)
+    print(f"Webcam streaming process started: {webcam_relay_args}")
