@@ -1,0 +1,20 @@
+import subprocess
+from da_tangible_tasks.config_fetcher.config_fetcher import fetch_config
+from da_tangible_tasks.config_fetcher.network_config import NetworkConfig
+
+config = NetworkConfig(fetch_config("server"))
+
+webcam_relay_args = [
+    str(arg) for arg in [
+        'ffmpeg',
+        '-s',
+        '640x480',
+        '-i',
+        '/dev/video0',
+        '-f',
+        'mpegts',
+        f'http://{config.ip}:{config.ports.video.post.L}/{config.secret_key}'
+    ]
+]
+
+webcam_relay_process = subprocess.Popen(webcam_relay_args)

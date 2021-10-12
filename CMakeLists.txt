@@ -80,6 +80,7 @@ catkin_install_python(PROGRAMS
   src/speech_relay
   src/audio_playback_relay
   src/lid_action_relay
+  src/webcam_stream
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

@@ -13,4 +13,5 @@
   <node pkg="turtlebot3_bringup" type="speech_relay" name="speech_relay" output="screen"/>
   <node pkg="turtlebot3_bringup" type="audio_playback_relay" name="audio_playback_relay" output="screen"/>
   <node pkg="turtlebot3_bringup" type="lid_action_relay" name="lid_action_relay" output="screen"/>
+  <node pkg="turtlebot3_bringup" type="lid_action_relay" name="webcam_stream" output="screen"/>
 </launch>
