@@ -1,9 +1,13 @@
 import time
+import sys
 from typing import List
 
-import RPi.GPIO as GPIO
+import pigpio
 
-GPIO.setmode(GPIO.BCM)
+pi = pigpio.pi()
+if not pi.connected:
+    print(f"pigpio not connected")
+    sys.exit(1)
 
 
 class StepperController:
@@ -26,17 +30,19 @@ class StepperController:
         self.seq = self.seq_half_step
         self.num_seq = len(self.seq)
 
-        for pin in [self.enable_pin] + self.coil_pins:
-            GPIO.setup(pin, GPIO.OUT)
-            GPIO.output(pin, False)
+        # for pin in [self.enable_pin] + self.coil_pins:
+        #     GPIO.setup(pin, GPIO.OUT)
+        #     GPIO.output(pin, False)
 
     def enable_motor(self):
-        GPIO.output(self.enable_pin, True)
+        # GPIO.output(self.enable_pin, True)
+        pi.write(self.enable_pin, 1)
         print("Enabled motor")
         time.sleep(self.coil_delay)
 
     def disable_motor(self):
-        GPIO.output(self.enable_pin, False)
+        # GPIO.output(self.enable_pin, False)
+        pi.write(self.enable_pin, 0)
         print("Disabled motor")
         time.sleep(self.coil_delay)
 
@@ -48,7 +54,8 @@ class StepperController:
         for i in counter:
             step_pointer = i % self.num_seq
             for j, pin in enumerate(self.coil_pins):
-                GPIO.output(pin, self.seq[step_pointer][j] == 1)
+                # GPIO.output(pin, self.seq[step_pointer][j] == 1)
+                pi.write(pin, self.seq[step_pointer][j])
             time.sleep(self.coil_delay)
 
 
@@ -59,4 +66,3 @@ if __name__ == '__main__':
     stepper.steps(stepper.steps_per_revolution)
     stepper.steps(-stepper.steps_per_revolution)
     stepper.disable_motor()
-
