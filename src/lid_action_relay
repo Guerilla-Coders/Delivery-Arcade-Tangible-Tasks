@@ -19,9 +19,11 @@ class LidActionSubscriber:
             if action_code == ActionConstants.lid_close:
                 print(f"Closing Lid")
                 self.stepper.steps(1 * self.direction * self.steps_closed_to_opened)
+                self.state = action_code
             elif action_code == ActionConstants.lid_open:
                 print(f"Opening Lid")
                 self.stepper.steps(-1 * self.direction * self.steps_closed_to_opened)
+                self.state = action_code
             else:
                 raise ValueError
             self.stepper.disable_motor()
